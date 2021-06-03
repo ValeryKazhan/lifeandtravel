@@ -1,4 +1,4 @@
-@extends('blog.pages.post')
+@extends('blog.postLayout')
 @section('heading')
     {{$posts[$number][0]}}
 @endsection

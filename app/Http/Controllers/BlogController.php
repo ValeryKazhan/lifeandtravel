@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
+
+
 
 class BlogController extends Controller
 {
@@ -11,7 +12,7 @@ class BlogController extends Controller
     }
 
     public function blogList(){
-        return view ('blog.blogList');
+        return view ('blog.blogListLayout');
     }
 
     public function blogPages($number){
@@ -19,3 +20,6 @@ class BlogController extends Controller
     }
 
 }
+
+
+

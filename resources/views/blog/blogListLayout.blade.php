@@ -11,31 +11,16 @@
         <div>
             <a href="/">Go to home page</a>
             <h1>Blog list</h1>
-            
-            <div>
-                <h2>Post 1</h2>
-                <p>Text for first blog page. Text for first blog page. Text for first blog page. Text for first blog page. Text for first blog page.
-                Text for first blog page. Text for first blog page. Text for first blog page. Text for first blog page.
-                Text for first blog page. Text for first blog page. Text for first blog page. Text for first blog page.
-                Text for first blog page. Text for first blog page.</p>
-                <a href = /blog/pages/1>Reed this Post</a>
-            </div>
-            <div>
-                <h2>Post 2</h2>
-                <p>Text for second blog page. Text for second blog page. Text for second blog page. Text for second blog page. Text for second blog page.
-                Text for second blog page. Text for second blog page. Text for second blog page. Text for second blog page. Text for second blog page. Text for second blog page.
-                Text for second blog page. Text for second blog page. Text for second blog page. Text for second blog page.</p>
-                <a href = /blog/pages/2>Reed this Post</a>
-            </div>
-            <div>
-                <h2>Post 3</h2>
-                <p>Text for second blog page. Text for second blog page. Text for second blog page. Text for second blog page. Text for second blog page. Text for second blog page.
-                Text for second blog page. Text for second blog page. Text for second blog page. Text for second blog page. Text for second blog page. Text for second blog page.
-                Text for second blog page. Text for second blog page.</p>
-                <a href = /blog/pages/3>Reed this Post</a>
-            </div>
 
-
+            @foreach ($posts as $key=>$post)
+                <div>
+                    <h1>{{$post[0]}}</h1>
+                    <p>
+                        {{$post[1]}}
+                    </p>
+                        <a href= {{url("/blog/$key")}}>Reed the post</a>
+                </div>
+            @endforeach
 
         </div>
     </body>
