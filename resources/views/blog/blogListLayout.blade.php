@@ -12,13 +12,13 @@
             <a href="/">Go to home page</a>
             <h1>Blog list</h1>
 
-            @foreach ($posts as $key=>$post)
+            @foreach ($posts as $post)
                 <div>
-                    <h1>{{$post[0]}}</h1>
+                    <h1>{{$post->getHead()}}</h1>
                     <p>
-                        {{$post[1]}}
+                        {{$post->getText()}}
                     </p>
-                        <a href= {{url("/blog/$key")}}>Reed the post</a>
+                        <a href= {{url("/blog/".$post->getSlug())}}>Read the post</a>
                 </div>
             @endforeach
 
