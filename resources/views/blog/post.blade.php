@@ -1,9 +1,9 @@
 @extends('blog.postLayout')
 @section('heading')
-    {{$post['head']}}
+    {{$post->header}}
 @endsection
 @section('paragraph')
-    {{$post['text']}}}
+    {{$post->body}}
 @endsection
 <li><a href="/blog">Go to my blog</a></li>
 <li><a href="/">Go to my home page</a></li>

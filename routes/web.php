@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\BlogController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +15,7 @@ use App\Http\Controllers\BlogController;
 |
 */
 
-Route::get('/', [BlogController::class, 'index']);
-
-Route::get('/blog',[BlogController::class, 'blogList']);
-Route::get('blog/{slug}', [BlogController::class, 'showPost']);
+Route::get('/', [PostController::class, 'index']);
+Route::get('/blog',[PostController::class, 'blogList']);
+Route::get('blog/{post:slug}', [PostController::class, 'showPost']);
 

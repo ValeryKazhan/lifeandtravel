@@ -14,11 +14,11 @@
 
             @foreach ($posts as $post)
                 <div>
-                    <h1>{{$post->getHead()}}</h1>
+                    <h1>{{$post->header}}</h1>
                     <p>
-                        {{$post->getText()}}
+                        {{$post->body}}
                     </p>
-                        <a href= {{url("/blog/".$post->getSlug())}}>Read the post</a>
+                        <a href= {{url("/blog/".$post->slug)}}>Read the post</a>
                 </div>
             @endforeach
 
