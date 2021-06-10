@@ -18,4 +18,4 @@ use App\Http\Controllers\PostController;
 Route::get('/', [PostController::class, 'index']);
 Route::get('/blog',[PostController::class, 'blogList']);
 Route::get('blog/{post:slug}', [PostController::class, 'showPost']);
-
+Route::get('categories/{category:slug}',[PostController::class, 'showCategory']);

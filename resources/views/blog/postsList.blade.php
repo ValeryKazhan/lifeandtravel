@@ -9,12 +9,14 @@
     </head>
     <body>
         <div>
-            <a href="/">Go to home page</a>
+            <li><a href="/blog">Go to my blog</a></li>
+            <li><a href="/">Go to my home page</a></li>
             <h1>Blog list</h1>
 
             @foreach ($posts as $post)
                 <div>
                     <h1>{{$post->header}}</h1>
+                    <a href= {{url("categories/".$post->category->slug)}}>{{$post->category->name}}</a>
                     <p>
                         {{$post->body}}
                     </p>
