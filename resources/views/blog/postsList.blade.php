@@ -16,7 +16,8 @@
             @foreach ($posts as $post)
                 <div>
                     <h1>{{$post->header}}</h1>
-                    <a href= {{url("categories/".$post->category->slug)}}>{{$post->category->name}}</a>
+                    <li><a href= {{url("categories/".$post->category->slug)}}>Written by {{$post->user->name}}</a></li>
+                    <li><a href= {{url("categories/".$post->category->slug)}}>Category: {{$post->category->name}}</a></li>
                     <p>
                         {{$post->body}}
                     </p>

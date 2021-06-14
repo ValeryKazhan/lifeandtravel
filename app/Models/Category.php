@@ -9,6 +9,13 @@ class Category extends Model
 {
     use HasFactory;
 
+    /**
+     * @var mixed
+     */
+    /**
+     * @var mixed
+     */
+
     public function posts()
     {
         return $this->hasMany(Post::class);
