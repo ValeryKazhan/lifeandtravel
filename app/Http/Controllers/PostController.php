@@ -14,11 +14,10 @@ class PostController extends Controller
     }
 
     private function showPostsList($posts){
-        return view ('blog.postsList', ['posts' => $posts]);
+        return view ('blog.postsList', ['posts' => $posts, 'requestString' => new RequestString()]);
     }
 
     public function blogList(Request $request){
-        //return $this->showPostsList(Post::with('category')->get());
        $posts = Post::query();
        if ($category = $request->get('cat')){
             $posts->where('category_id', '=', $category);

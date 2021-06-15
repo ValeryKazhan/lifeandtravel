@@ -16,11 +16,26 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::truncate();
-        Category::truncate();
-        Post::truncate();
+        $category1 = Category::factory()->create();
+        $category2 = Category::factory()->create();
+        $category3 = Category::factory()->create();
 
-        $user1= self::createRandomUser();
+        $user1 = User::factory()->create();
+        $user2 = User::factory()->create();
+
+        Post::factory(3)->create(['user_id' => $user1->id, 'category_id'=>$category1->id]);
+        Post::factory(2)->create(['user_id' => $user1->id, 'category_id'=>$category2->id]);
+        Post::factory(1)->create(['user_id' => $user1->id, 'category_id'=>$category3->id]);
+
+        Post::factory(4)->create(['user_id' => $user2->id, 'category_id'=>$category1->id]);
+        Post::factory(5)->create(['user_id' => $user2->id, 'category_id'=>$category2->id]);
+        Post::factory(6)->create(['user_id' => $user2->id, 'category_id'=>$category3->id]);
+
+
+    }
+
+
+    /*$user1= self::createRandomUser();
         $user2 = self::createRandomUser();
 
         $sportCategory = self::createCategory('sport', 'Sport');
@@ -31,8 +46,6 @@ class DatabaseSeeder extends Seeder
         self::createPost($user1, $sportCategory,'Sport post two', 'sport_post_two', 'Sport post text two');
         self::createPost($user1,$newsCategory,'News post one', 'news_post_one', 'News post text one');
         self::createPost($user2,$actionCategory,'Action post one', 'action_post_one', 'Action post text one!');
-
-    }
 
     private static function createPost(User $user, Category $category, string $header, string $slug, string $body):Post
     {
@@ -48,6 +61,9 @@ class DatabaseSeeder extends Seeder
         );
     }
 
+
+
+
     private static function createCategory(string $slug, string $name): Category
     {
         return Category::create(
@@ -61,7 +77,7 @@ class DatabaseSeeder extends Seeder
     private static function createRandomUser():User
     {
         return User::factory()->create();
-    }
+    }*/
 
 
 
