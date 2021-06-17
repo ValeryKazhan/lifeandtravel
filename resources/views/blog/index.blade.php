@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--OLD CODE-->
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -15,3 +16,20 @@
         </div>
     </body>
 </html>
+<!--NEW CODE-->
+<x-layout>
+    <main class="max-w-6xl mx-auto mt-6 lg:mt-20 space-y-6">
+        <x-fullWidthPost></x-fullWidthPost>
+        <x-halfWidthColumn>
+            <x-postCard/>
+            <x-postCard/>
+        </x-halfWidthColumn>
+
+        <x-thirdWidthColumn>
+            <x-postCard/>
+            <x-postCard/>
+            <x-postCard/>
+        </x-thirdWidthColumn>
+
+    </main>
+</x-layout>

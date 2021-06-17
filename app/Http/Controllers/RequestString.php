@@ -31,7 +31,7 @@ class RequestString
     public function addRequest(string $key, $value): string
     {
 
-        /*if(!(array_key_exists($key, $this->queries))){
+        if(!(array_key_exists($key, $this->queries))){
             array_push($this->queries, [$key=>$value]);
             if(!($this->hasRequest)){
                 $this->string = $this->initiate();
@@ -39,7 +39,8 @@ class RequestString
                 $this->string = $this->string.'&';
             }
             $this->string.= $key.'='.$value;
-        }*/
+        }
+        return $this->string;
 
 
         return $this->initiate().$key.'='.$value;
