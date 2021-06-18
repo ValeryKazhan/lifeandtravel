@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>{{config('app.name')}}</title>
+        <title>{config('app.name')}}</title>
 
     </head>
     <body>
@@ -14,5 +14,7 @@
                 @yield('paragraph')
             </p>
         </div>
+        <li><a href="/blog">Go to my blog</a></li>
+        <li><a href="/">Go to my home page</a></li>
     </body>
 </html>

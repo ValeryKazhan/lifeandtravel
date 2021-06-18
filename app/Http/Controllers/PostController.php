@@ -9,8 +9,16 @@ use App\Models\Post;
 class PostController extends Controller
 {
 
-    public function index(){
-        return view ('blog.index');
+    public function index(Request $request){
+        $posts = Post::query();
+        if ($category = $request->get('cat')){
+            $posts->where('category_id', '=', $category);
+        }
+        if ($user = $request->get('user')){
+            $posts->where('user_id', '=', $user);
+        }
+        return view ('blog.index', ['posts' => $posts->get()]);
+        //return view ('blog.index');
     }
 
     private function showPostsList($posts){
