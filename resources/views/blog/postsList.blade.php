@@ -17,8 +17,8 @@
             @foreach ($posts as $post)
                 <div>
                     <h1>{{$post->header}}</h1>
-                    <li><a href= {{url("blog".$requestString->addRequest('user', $post->user->id))}}>Written by {{$post->user->name}}</a></li>
-                    <li><a href= {{url("blog".$requestString->addRequest('cat', $post->category->id))}}>Category: {{$post->category->name}}</a></li>
+                    <li><a href= "blog {{$requestString->addRequest('user', $post->user->id)}}">Written by {{$post->user->name}}</a></li>
+                    <li><a href= "blog{{$requestString->addRequest('cat', $post->category->id)}}">Category: {{$post->category->name}}</a></li>
                     <p>
                         {{$post->body}}
                     </p>

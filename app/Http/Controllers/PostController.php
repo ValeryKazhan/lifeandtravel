@@ -17,12 +17,16 @@ class PostController extends Controller
         if ($user = $request->get('user')){
             $posts->where('user_id', '=', $user);
         }
-        return view ('blog.index', ['posts' => $posts->get()]);
+
+        return view ('blog.index', [
+            'posts' => $posts->get(),
+            'currentCategory' => Category::query()->where('id', '=', $category)->first()
+            ]);
         //return view ('blog.index');
     }
 
-    private function showPostsList($posts){
-        return view ('blog.postsList', ['posts' => $posts, 'requestString' => new RequestString()]);
+    private function showPostsList($posts, string $view = 'blog.postsList'){
+        return view ($view, ['posts' => $posts, 'requestString' => new RequestString()]);
     }
 
     public function blogList(Request $request){

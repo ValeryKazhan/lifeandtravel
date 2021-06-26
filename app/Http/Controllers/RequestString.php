@@ -17,6 +17,11 @@ class RequestString
         $this->hasRequest = false;
     }
 
+    public function get(): string
+    {
+        return $this->string;
+    }
+
     public function clear(): string
     {
         $this->queries = [];
@@ -31,7 +36,7 @@ class RequestString
     public function addRequest(string $key, $value): string
     {
 
-        if(!(array_key_exists($key, $this->queries))){
+       /*if(!(array_key_exists($key, $this->queries))){
             array_push($this->queries, [$key=>$value]);
             if(!($this->hasRequest)){
                 $this->string = $this->initiate();
@@ -40,7 +45,8 @@ class RequestString
             }
             $this->string.= $key.'='.$value;
         }
-        return $this->string;
+        return $this->string;*/
+
 
 
         return $this->initiate().$key.'='.$value;
