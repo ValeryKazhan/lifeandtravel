@@ -10,10 +10,9 @@
         <div class="flex-1 flex flex-col justify-between">
             <header class="mt-8 lg:mt-0">
                 <div class="space-x-2">
-                    <x-filter-parameter
-                        :key="'cat'"
-                        :parameter="$post->category"
-                        />
+                    <x-post-filter-parameters
+                        :post="$post"
+                    />
                 </div>
 
                 <div class="mt-4">

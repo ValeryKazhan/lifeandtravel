@@ -8,8 +8,7 @@ use App\Models\Post;
 
 class PostController extends Controller
 {
-
-    public function index(Request $request){
+    private function getPosts(Request $request){
         $posts = Post::query();
         if ($category = $request->get('cat')){
             $posts->where('category_id', '=', $category);
@@ -18,9 +17,19 @@ class PostController extends Controller
             $posts->where('user_id', '=', $user);
         }
 
+        if(request($search = 'search')){
+            $posts
+                ->where('header', 'like', $searchString = '%'.request($search).'%')
+                ->orWhere('body', 'like', $searchString);
+        }
+
+        return $posts->get();
+    }
+
+    public function index(Request $request){
+
         return view ('blog.index', [
-            'posts' => $posts->get(),
-            'currentCategory' => Category::query()->where('id', '=', $category)->first()
+            'posts' => $this->getPosts($request)
             ]);
         //return view ('blog.index');
     }
