@@ -32,7 +32,7 @@
                 </p>
 
                 <p class="mt-4">
-                    {{$post->user->name}}
+                    {{$post->author->name}}
                 </p>
             </div>
 

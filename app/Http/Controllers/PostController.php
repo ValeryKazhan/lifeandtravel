@@ -2,59 +2,73 @@
 
 namespace App\Http\Controllers;
 use App\Models\Category;
+
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Post;
 
 
 class PostController extends Controller
 {
-    private function getPosts(Request $request){
-        $posts = Post::query();
-        if ($category = $request->get('cat')){
-            $posts->where('category_id', '=', $category);
-        }
-        if ($user = $request->get('user')){
-            $posts->where('user_id', '=', $user);
-        }
 
-        if(request($search = 'search')){
+    public function search($posts){
+        if(request($search = 'search'))
+        {
             $posts
-                ->where('header', 'like', $searchString = '%'.request($search).'%')
-                ->orWhere('body', 'like', $searchString);
+                ->where('header', 'like', '%'.request($search).'%')
+                ->orWhere('body', 'like', '%'.request($search).'%');
         }
-
-        return $posts->get();
+        return $posts;
     }
 
-    public function index(Request $request){
 
-        return view ('blog.index', [
-            'posts' => $this->getPosts($request)
+    public function index(){
+
+        $posts = Post::query();
+        $posts = $this->search($posts);
+
+        return view ('index', [
+            'posts' => $posts->paginate(Post::POSTS_PER_PAGE),
+            'categories' => Category::all(),
+            'authors' => User::all()
             ]);
-        //return view ('blog.index');
     }
 
-    private function showPostsList($posts, string $view = 'blog.postsList'){
-        return view ($view, ['posts' => $posts, 'requestString' => new RequestString()]);
+    public function showAuthorPosts(User $author){
+
+        $posts = Post::where('user_id', '=', $author->id);
+        $posts = $this->search($posts);
+
+        return view ('index', [
+            'posts' => $posts->paginate(Post::POSTS_PER_PAGE),
+            'currentAuthor' => $author,
+            'categories' => Category::all(),
+            'authors' => User::all()
+        ]);
     }
 
-    public function blogList(Request $request){
-       $posts = Post::query();
-       if ($category = $request->get('cat')){
-            $posts->where('category_id', '=', $category);
-       }
-       if ($user = $request->get('user')){
-            $posts->where('user_id', '=', $user);
-       }
-        return $this->showPostsList($posts->get());
+    public function showCategoryPosts(Category $category){
+
+        $posts = Post::where('category_id', '=', $category->id);
+        $posts = $this->search($posts);
+
+        return view ('index', [
+            'posts' => $posts->paginate(Post::POSTS_PER_PAGE),
+            'currentCategory' => $category,
+            'categories' => Category::all(),
+            'authors' => User::all()
+        ]);
     }
 
-    public function showCategory(Category $category){
-        return $this->showPostsList($category->posts);
-    }
 
     public function showPost(Post $post){
-        return view ("blog.post", ['post' => $post]);
+        return view ('post', [
+            'post' => $post,
+            'currentCategory' => $post->category,
+            'currentAuthor' => $post->author,
+            'categories' => Category::all(),
+            'authors' => User::all()
+            ]);
     }
 
 

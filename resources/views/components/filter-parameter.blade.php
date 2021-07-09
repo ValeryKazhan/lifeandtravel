@@ -1,4 +1,4 @@
-@props(['key', 'parameter', 'class', 'style'])
-<a href="?{{$key}}={{$parameter->id}}"
-   class="{{$class}}"
-   style="{{$style}}">{{$parameter->name}}</a>
+@props(['href'])
+<a href="{{$href}}"
+   class="px-3 py-1 border border-blue-300 rounded-full text-blue-300 text-xs uppercase font-semibold"
+   style="font-size: 10px">{{$slot}}</a>

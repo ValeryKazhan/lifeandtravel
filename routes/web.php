@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\SessionsController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\PostController;
 
 /*
@@ -16,6 +17,17 @@ use App\Http\Controllers\PostController;
 */
 
 Route::get('/', [PostController::class, 'index']);
-Route::get('/blog',[PostController::class, 'blogList']);
-Route::get('blog/{post:slug}', [PostController::class, 'showPost']);
-/*Route::get('categories/{category:slug}',[PostController::class, 'showCategory']);*/
+Route::get('{post:slug}', [PostController::class, 'showPost']);
+Route::get('categories/{category:slug}', [PostController::class, 'showCategoryPosts']);
+Route::get('authors/{author:username}', [PostController::class, 'showAuthorPosts']);
+
+
+Route::get('/register/create', [RegisterController::class, 'create'])->middleware('guest');
+Route::post('/register/create', [RegisterController::class, 'store'])->middleware('guest');
+
+
+Route::get('/sessions/login', [SessionsController::class, 'create'])->middleware('guest');
+Route::post('sessions', [SessionsController::class, 'store'])->middleware('guest');
+
+Route::post('/sessions/logout', [SessionsController::class, 'destroy'])->middleware('auth');
+
