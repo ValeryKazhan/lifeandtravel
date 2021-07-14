@@ -4,6 +4,7 @@ use App\Http\Controllers\SessionsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,8 @@ use App\Http\Controllers\PostController;
 
 Route::get('/', [PostController::class, 'index']);
 Route::get('{post:slug}', [PostController::class, 'showPost']);
+Route::post('{post:slug}/comments', [CommentController::class, 'store']);
+
 Route::get('categories/{category:slug}', [PostController::class, 'showCategoryPosts']);
 Route::get('authors/{author:username}', [PostController::class, 'showAuthorPosts']);
 

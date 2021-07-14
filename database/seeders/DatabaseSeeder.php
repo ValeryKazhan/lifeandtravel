@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
+use App\Models\Comment;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -31,6 +32,7 @@ class DatabaseSeeder extends Seeder
         Post::factory(5)->create(['user_id' => $user2->id, 'category_id'=>$category2->id]);
         Post::factory(6)->create(['user_id' => $user2->id, 'category_id'=>$category3->id]);
 
+        Comment::factory(10)->create(['post_id' => 1]);
 
     }
 

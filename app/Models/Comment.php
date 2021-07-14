@@ -4,23 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Post;
+use App\Models\User;
 
-class Post extends Model
+class Comment extends Model
 {
-    const POSTS_PER_PAGE = 6;
-
     use HasFactory;
 
-    public function comments()
-    {
-        return $this->hasMany(Comment::class);
-    }
-
-    public function category(){
-        return $this->belongsTo(Category::class);
+    public function post(){
+        return $this->belongsTo(Post::class);
     }
 
     public function author(){
         return $this->belongsTo(User::class, 'user_id');
     }
+
 }
