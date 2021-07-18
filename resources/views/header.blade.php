@@ -25,6 +25,12 @@
                     {{ isset($currentCategory) ? $currentCategory->name : 'Categories'}}
                 </x-button>
             </x-slot>
+
+            <x-link
+                :name="'All'"
+                :link="'\\'"
+            />
+
             @foreach($categories as $category)
                 <a href="/categories/{{$category->slug}}" class="{{$dropdownElementsClass}}">{{$category->name}}</a>
             @endforeach
@@ -38,6 +44,12 @@
                     {{ isset($currentAuthor) ? $currentAuthor->name : 'Authors'}}
                 </x-button>
             </x-slot>
+
+            <x-link
+                :name="'All'"
+                :link="'\\'"
+            />
+
             @foreach($authors as $author)
                 <a href="/authors/{{$author->username}}" class="{{$dropdownElementsClass}}">{{$author->name}}</a>
             @endforeach

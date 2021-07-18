@@ -21,6 +21,9 @@ Route::get('/', [PostController::class, 'index']);
 Route::get('{post:slug}', [PostController::class, 'showPost']);
 Route::post('{post:slug}/comments', [CommentController::class, 'store']);
 
+Route::get('/post/create', [PostController::class, 'create'])->middleware('auth');
+Route::post('/post/create', [PostController::class, 'store'])->middleware('auth');
+
 Route::get('categories/{category:slug}', [PostController::class, 'showCategoryPosts']);
 Route::get('authors/{author:username}', [PostController::class, 'showAuthorPosts']);
 
