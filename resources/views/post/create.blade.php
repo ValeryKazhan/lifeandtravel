@@ -53,31 +53,22 @@
                         <span class="text-xs text-red-500">{{$message}}</span>
                         @enderror
                     </div>
-
+                    
                     <header class="block mb-2 uppercase font-bold text-xs text-gray-700 mt-10">
-                        <h2 >Choose The Category Of Your New Post</h2>
+                        <label for="category_id">Choose The Category Of Your New Post:</label>
                     </header>
 
-                    <x-dropdown>
-                        <x-slot name="trigger">
-                            <x-button>
-                                {{ isset($currentCategory) ? $currentCategory->name : 'Categories'}}
-                            </x-button>
-                        </x-slot>
+                    <select class="relative flex lg:inline-flex items-center bg-gray-100 rounded-xl py-2 px-5 font-semibold"
+                            id="category_id"
+                            name="category_id">
                         @foreach($categories as $category)
                             <div class="block text-left px-3 text-sm leading-6 hover:bg-blue-500 hover:text-white">
-                                <input
-                                    type="radio"
-                                    name="category_id"
-                                    id="category_id"
-                                    value="{{$category->id}}"
-                                    required
-                                >{{$category->name}}<br>
-                            </div>
+                                <option  value="{{$category->id}}">{{$category->name}}</option>
 
-                            {{--                        <a>{{$category->name}}</a>--}}
+                            </div>
                         @endforeach
-                    </x-dropdown>
+                    </select>
+
 
                     <div class="flex justify-end mt-4">
                         <x-submit-button>
