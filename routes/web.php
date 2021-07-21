@@ -20,6 +20,7 @@ use App\Http\Controllers\CommentController;
 Route::get('/', [PostController::class, 'index']);
 Route::get('{post:slug}', [PostController::class, 'showPost']);
 Route::post('{post:slug}/comments', [CommentController::class, 'store']);
+Route::post('{post:slug}/delete', [PostController::class, 'delete']);
 
 Route::get('/post/create', [PostController::class, 'create'])->middleware('auth');
 Route::post('/post/create', [PostController::class, 'store'])->middleware('auth');
@@ -30,7 +31,6 @@ Route::get('authors/{author:username}', [PostController::class, 'showAuthorPosts
 
 Route::get('/register/create', [RegisterController::class, 'create'])->middleware('guest');
 Route::post('/register/create', [RegisterController::class, 'store'])->middleware('guest');
-
 
 Route::get('/sessions/login', [SessionsController::class, 'create'])->middleware('guest');
 Route::post('sessions', [SessionsController::class, 'store'])->middleware('guest');

@@ -53,7 +53,7 @@
                         <span class="text-xs text-red-500">{{$message}}</span>
                         @enderror
                     </div>
-                    
+
                     <header class="block mb-2 uppercase font-bold text-xs text-gray-700 mt-10">
                         <label for="category_id">Choose The Category Of Your New Post:</label>
                     </header>

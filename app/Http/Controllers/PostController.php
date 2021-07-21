@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 
 class PostController extends Controller
@@ -28,16 +29,32 @@ class PostController extends Controller
             'category_id'=>['required']
         ]);
 
-        $post = Post::create([
-            'category_id' => $attributes['category_id'],
-            'user_id' => auth()->id(),
-            'header' => $attributes['header'],
-            'slug' => Str::slug($attributes['header']),
-            'body' => $attributes['body']
-        ]);
+        $attributes['user_id'] = auth()->id();
+        $attributes['slug'] = Str::slug($attributes['header']);
+
+//        $post = Post::create([
+//            'category_id' => $attributes['category_id'],
+//            'user_id' => auth()->id(),
+//            'header' => $attributes['header'],
+//            'slug' => Str::slug($attributes['header']),
+//            'body' => $attributes['body']
+//        ]);
+
+        $post = Post::create($attributes);
 
         return redirect("/$post->slug");
 
+    }
+
+    public function delete(Post $post){
+
+        if($post->author->id == auth()->id()){
+            //$post->delete();
+            DB::table('posts')->where('id', '=', $post->id)->delete();
+            session()->flash('post deleted', "Post \"$post->header\" is successfully deleted");
+        }
+
+        return redirect('/authors/'.auth()->user()->username);
     }
 
     public function index(){
@@ -76,6 +93,7 @@ class PostController extends Controller
             'categories' => Category::all(),
             'authors' => User::all()
         ]);
+
     }
 
 

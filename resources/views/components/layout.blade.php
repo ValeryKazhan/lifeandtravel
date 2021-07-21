@@ -48,6 +48,12 @@
                                 Create New Post
                             </a>
                        </nav>
+
+                        <nav class="md:flex md:justify-end md:items-center">
+                            <a href="/authors/{{auth()->user()->username}}" class="bg-blue-500 rounded-full text-xs font-semibold text-white uppercase py-3 px-5 mt-4 ml-100">
+                                My Posts
+                            </a>
+                        </nav>
                     @endauth
 
 
@@ -62,12 +68,12 @@
         @include('footer')
     </section>
 
-    @if(session()->has('success'))
+    <x-flash
+        :key="'success'"
+    />
+    <x-flash
+        :key="'post deleted'"
+    />
 
-        <div class="fixed bg-blue-500 text-white py-2 px-4 rounded-xl bottom-3 right-3 text-sm">
-            <p>{{session('success')}}</p>
-        </div>
-
-    @endif
 
 </body>

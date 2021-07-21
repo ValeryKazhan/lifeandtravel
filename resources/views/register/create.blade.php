@@ -8,7 +8,6 @@
                 @csrf
 
                 <div class="mb-6">
-
                     <x-input-field
                         :labelName="'Name'"
                         :type="'text'"
