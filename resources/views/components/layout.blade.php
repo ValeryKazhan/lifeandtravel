@@ -44,7 +44,7 @@
 
                     @auth
                         <nav class="md:flex md:justify-end md:items-center">
-                            <a href="/post/create" class="bg-blue-500 rounded-full text-xs font-semibold text-white uppercase py-3 px-5 mt-4 ml-100">
+                            <a href="/post" class="bg-blue-500 rounded-full text-xs font-semibold text-white uppercase py-3 px-5 mt-4 ml-100">
                                 Create New Post
                             </a>
                        </nav>
@@ -55,6 +55,13 @@
                             </a>
                         </nav>
                     @endauth
+                    @admin
+                    <nav class="md:flex md:justify-end md:items-center">
+                        <a href="/admin/menu" class="bg-red-500 rounded-full text-xs font-semibold text-white uppercase py-3 px-5 mt-4 ml-100">
+                            Admin Panel
+                        </a>
+                    </nav>
+                    @endadmin
 
 
 

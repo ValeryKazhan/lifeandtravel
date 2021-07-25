@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Http\Middleware\MustBeAdmin;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Model;
 
@@ -25,5 +27,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Model::unguard();
+        Blade::if('admin', function(){
+            return MustBeAdmin::isAdmin();
+        });
     }
 }
