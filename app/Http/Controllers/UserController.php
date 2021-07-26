@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\DB;
 class UserController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('admin')->except(['create', 'store']);
+    }
+
     public function create()
     {
         return view('user.create');
@@ -23,8 +28,8 @@ class UserController extends Controller
 
         $attributes = request()->validate([
             'name' => ['required','max:255'],
-            'username'=> ['required','min:3','max:255'/*, Rule::unique('users', 'username')*/],
-            'email' => ['required','email','max:255'/*, Rule::unique('users', 'email')*/],
+            'username'=> ['required','min:3','max:255', Rule::unique('users', 'username')],
+            'email' => ['required','email','max:255', Rule::unique('users', 'email')],
             'password' => ['required','max:255','min:7']
         ]);
 
@@ -43,27 +48,18 @@ class UserController extends Controller
     }
 
     public function adminUsers(){
-        if(MustBeAdmin::isAdmin()){
-            return view('admin.users', [
-                'users' => User::all()
-            ]);
-        } else
-            abort(403);
+        return view('admin.users', [
+            'users' => User::all()
+        ]);
     }
 
     public function destroy($id){
-        if(MustBeAdmin::isAdmin()){
 
-
-            DB::table('users')->where('id', '=', $id)->delete();
-            return redirect('/admin/menu')->with('user deleted', "User with id $id is deleted");
-        }
-
-
+        DB::table('users')->where('id', '=', $id)->delete();
+        return redirect('/admin/menu')->with('user deleted', "User with id $id is deleted");
     }
 
     public function update($id){
-        if(MustBeAdmin::isAdmin()){
 
         $attributes = request()->validate([
             'name' => ['required','max:255'],
@@ -72,9 +68,6 @@ class UserController extends Controller
         ]);
             DB::table('users')->where('id', '=', $id)->update($attributes);
             return redirect('/admin/menu')->with('user updated', "User with id $id is updated");
-        }
-
-
     }
 
 

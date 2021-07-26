@@ -15,8 +15,9 @@ use Illuminate\Validation\Rule;
 class PostController extends Controller
 {
 
+
     private static function matchesAuth($userId){
-        if($userId!=auth()->id() and !MustBeAdmin::isAdmin())///как пользоваться middleware правильно?
+        if($userId!=auth()->id() and !MustBeAdmin::isAdmin())///как в даннном случае пользоваться middleware правильно?
             abort(403);
     }
 
@@ -29,8 +30,6 @@ class PostController extends Controller
 
 
     public function edit(Post $post){
-
-
         return view('post.create-or-edit', [
             'post' => $post,
             'categories' => Category::all()
@@ -66,19 +65,15 @@ class PostController extends Controller
 
     public function update(Post $post){
 
-//        $post->slug = $attributes['slug'];
-//        $post->header = $attributes['header'];
-//        $post->body = $attributes['body'];
-//        $post->save();
-
         $attributes = $this->getValidatedPostAttributes();
 
         DB::table('posts')->where('id','=', $post->id)->update($attributes);
 
-
-
         return redirect("/post/".$attributes['slug'])->with('post edited', 'Post "'.$post->header.'" is successfully edited');
-
+//        $post->slug = $attributes['slug'];
+//        $post->header = $attributes['header'];
+//        $post->body = $attributes['body'];
+//        $post->save();
     }
 
     public function destroy(Post $post){
@@ -95,7 +90,6 @@ class PostController extends Controller
 
         $posts = Post::query();
         $posts = $this->search($posts);
-
         return view ('index', [
             'posts' => $posts->paginate(Post::POSTS_PER_PAGE),
             'categories' => Category::all(),

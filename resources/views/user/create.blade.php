@@ -27,6 +27,14 @@
                         :name="'email'"
                         :id="'email'"/>
 
+                    <x-input-field
+                        :labelName="'Password'"
+                        :type="'password'"
+                        :name="'password'"
+                        :id="'password'"
+                        :value="''"
+                    />
+
                     <div class="mb-6 mt-10">
 
                         <x-submit-button>
