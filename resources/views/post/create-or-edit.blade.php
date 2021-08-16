@@ -8,7 +8,7 @@
         $action="/post/update/$post->id";
         $header = $post->header;
         $body = $post->body;
-        $sumbitButton = 'Edit';
+        $submitButton = 'Edit';
         $authorId = $post->author->id;
     }
     else {
@@ -16,7 +16,7 @@
         $action = '/post/create';
         $header = EMPTY_STRING;
         $body = EMPTY_STRING;
-        $sumbitButton = 'Create';
+        $submitButton = 'Publish';
         $authorId = auth()->id();
     }
 
@@ -28,84 +28,91 @@
 
 
 <x-layout>
-
-
-
-
-    <section class="mt-10 ml-20 space-y-6">
+    <x--section>
+        <x--container>
 
         @auth
-            <x-panel>
-
-
-                <h1 class="text-center font-bold text-xl">{{$formName}}</h1>
-
+                <x--center>
+                    <h3 class="title mb-8">{{$formName}}</h3>
+                </x--center>
 
                 <form method="POST" action="{{$action}}">
                     @csrf
 
-                    <x-input-field
-                        :labelName="'Post Header'"
-                        :type="'text'"
-                        :name="'header'"
-                        :id="'header'"
-                        :value="$header"
-                    />
+{{--                    <input type="hidden" id="user_id" name="user_id" value="{{$authorId}}">--}}
+{{--                    @if(isset($post)&&(MustBeAdmin::isAdmin())&&isset($authors))--}}
+{{--                        <header class="block mb-2 uppercase font-bold text-xs text-gray-700 mt-10">--}}
+{{--                            <label for="user_id">Change Author (admins only).<br>--}}
+{{--                                Current Author is {{$post->author->name}}--}}
+{{--                            </label>--}}
+{{--                        </header>--}}
 
-                    {{--                    <input class="border border-gray-400 p-2 w-full"--}}
-                    {{--                           type=""--}}
-                    {{--                           name="{{$name}}"--}}
-                    {{--                           id="{{$id}}"--}}
-                    {{--                           value="{{$value}}"--}}
-                    {{--                           required--}}
-                    {{--                    >--}}
+{{--                        <select class="relative flex lg:inline-flex items-center bg-gray-100 rounded-xl py-2 px-5 font-semibold"--}}
+{{--                                id="user_id"--}}
+{{--                                name="user_id"--}}
+{{--                        >--}}
+{{--                            @foreach($authors as $author)--}}
+{{--                                <div class="block text-left px-3 text-sm leading-6 hover:bg-blue-500 hover:text-white">--}}
+{{--                                    <option value="{{$author->id}}" {{$author->id == $post->author->id ? 'selected' : ''}}>{{$author->name}}</option>--}}
+{{--                                </div>--}}
+{{--                            @endforeach--}}
+{{--                        </select>--}}
+{{--                    @endif--}}
 
-                    {{--                    @error("$id")--}}
-                    {{--                    <p class="text-red-500 text-xs mt-1">{{$message}}</p>--}}
-                    {{--                    @enderror--}}
+                    <x--title>
+                        Post Title
+                    </x--title>
+                    <p>Type in your post title into the field below</p>
 
-                    <header class="block mb-2 uppercase font-bold text-xs text-gray-700 mt-10">
-                        <h2 >Content</h2>
-                    </header>
+                    <input class="input mb-10"
+                           type="text"
+                           name="header"
+                           id="header"
+                           value="{{$header}}"
+                           required
+                    >
 
-                    <div class="mt-4">
-                    <textarea
-                        class="w-full text-sm"
-                        name="body"
-                        cols="30"
-                        rows="5"
-                        placeholder="Write down your post content"
 
-                        required>{{$body}}</textarea>
 
+                    <x--title>
+                        Content
+                    </x--title>
+
+
+                        <div class="form-group">
+                            <textarea class="input"
+                                      name="body"
+                                      placeholder="Write down your post content"
+                                      required
+                            >{{$body}}</textarea>
+                        </div>
                         @error('body')
                         <span class="text-xs text-red-500">{{$message}}</span>
                         @enderror
-                    </div>
 
-                    <header class="block mb-2 uppercase font-bold text-xs text-gray-700 mt-10">
+
+
+                    <h4>
                         <label for="category_id">Choose The Category Of Your Post.<br>
                             @if(isset($post))
                             Your current category is {{$post->category->name}}
                             @endif
                         </label>
-                    </header>
+                    </h4>
 
-                    <select class="relative flex lg:inline-flex items-center bg-gray-100 rounded-xl py-2 px-5 font-semibold"
+                    <select class="dropdown-list"
                             id="category_id"
                             name="category_id"
                     >
                         @foreach($categories as $category)
-                            <div class="block text-left px-3 text-sm leading-6 hover:bg-blue-500 hover:text-white">
+                            <li class="dropdown">
                                 <option value="{{$category->id}}" {{(isset($post)&&($category->id == $post->category->id) ? 'selected' : '')}}>{{$category->name}}</option>
-                            </div>
+                            </li>
                         @endforeach
                     </select>
 
-
-
                     <input type="hidden" id="user_id" name="user_id" value="{{$authorId}}">
-                    @if(isset($post)&&(MustBeAdmin::isAdmin()))
+                    @if(isset($post)&&(MustBeAdmin::isAdmin())&&isset($authors))
                     <header class="block mb-2 uppercase font-bold text-xs text-gray-700 mt-10">
                         <label for="user_id">Change Author (admins only).<br>
                                 Current Author is {{$post->author->name}}
@@ -124,25 +131,29 @@
                     </select>
                     @endif
 
+                    <div class="section-row mt-10">
+                        <x--center>
+                            <x--pink-button
+                                type="submit"
+                            >
+                                {{$submitButton}}
+                            </x--pink-button>
+
+                        </x--center>
 
 
-                    <div class="flex justify-end mt-4">
-                        <x-submit-button>
-                            {{$sumbitButton}}
-                        </x-submit-button>
+
+
                     </div>
 
-
-
-
-
                 </form>
-            </x-panel>
-        @else
-            <p class="font-semibold">
-                <a href = "/register/create" class="hover:underline">Register</a> or <a href="/sessions/login" class="hover:underline">Log in</a> to leave a comment.
-            </p>
-        @endauth
-    </section>
 
+
+
+        @endauth
+
+
+        </x--container>
+    </x--section>
 </x-layout>
+

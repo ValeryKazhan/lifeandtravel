@@ -4,19 +4,50 @@
 <x-layout>
     @include('header')
 
-    <main class="max-w-6xl mx-auto mt-6 lg:mt-20 space-y-6">
-        @if($posts->count())
-            <x-feature-post-card :post="$posts[0]"/>
-            <div class="lg:grid lg:grid-cols-6">
-                @foreach($posts->skip(1) as $post)
-                    <x-postCard
-                        :post="$post"
-                        class="{{$loop->iteration < 3 ? 'col-span-3' : 'col-span-2'}}"
-                    />
-                @endforeach
-            </div>
-        {{$posts->links()}}
-        @endif
+    <body>
 
-    </main>
+
+    {{--    <x--posts-big-picture/>--}}
+    <x--three-main-posts
+        :post1="$posts[0]"
+        :post2="$posts[1]"
+        :post3="$posts[2]"
+    />
+
+    <x--left-and-right-side>
+        <x-slot name="leftSide">
+
+            @foreach($posts as $post)
+                @if($loop->iteration>3)
+                    @if($loop->iteration%2==0)
+                        <x--endline/>
+                    @endif
+                    <x--post-half-page
+                        :post="$post"
+                    />
+                @endif
+            @endforeach
+
+
+
+
+        </x-slot>
+        <x-slot name="rightSide">
+            <x--right-side-widgets/>
+
+        </x-slot>
+    </x--left-and-right-side>
+
+    <div class="flex justify-center">
+        {{$posts->links()}}
+    </div>
+
+    <x--ad-widget-horisontal/>
+
+
+
+
+    </body>
+
+
 </x-layout>

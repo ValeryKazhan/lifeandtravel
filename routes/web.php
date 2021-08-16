@@ -52,3 +52,7 @@ Route::get('/admin/user/edit/{user}', [UserController::class, 'adminEdit'])->mid
 Route::post('/admin/user/update/{id}', [UserController::class, 'update'])->middleware('admin');
 Route::get('/admin/user/delete/{id}', [UserController::class, 'destroy'])->middleware('admin');
 
+Route::get('/blogpost', function(){
+    return view('blog-post');
+});
+

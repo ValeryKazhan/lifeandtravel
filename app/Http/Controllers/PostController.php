@@ -36,6 +36,7 @@ class PostController extends Controller
         ]);
     }
 
+
     private function getValidatedPostAttributes(): array
     {
 
@@ -46,6 +47,8 @@ class PostController extends Controller
             'user_id' => ['required', Rule::exists('users', 'id')]
         ]);
 
+
+
         self::matchesAuth($attributes['user_id']);
 
         $attributes['slug'] = Str::slug($attributes['header']);
@@ -55,7 +58,11 @@ class PostController extends Controller
 
     public function store(){
 
+
+
         $attributes = $this->getValidatedPostAttributes();
+
+
 
         $post = Post::create($attributes);
 
@@ -88,21 +95,20 @@ class PostController extends Controller
 
     public function index(){
 
-        $posts = Post::query();
-        $posts = $this->search($posts);
+        //$posts = Post::query();
+        $posts = $this->search(Post::query());
+
         return view ('index', [
-            'posts' => $posts->paginate(Post::POSTS_PER_PAGE),
+            'posts' => $posts->paginate(13),
             'categories' => Category::all(),
             'authors' => User::all()
             ]);
     }
 
     public function showAuthorPosts(User $author){
-
         $posts = Post::where('user_id', '=', $author->id);
         $posts = $this->search($posts);
-
-        return view ('index', [
+        return view ('author', [
             'posts' => $posts->paginate(Post::POSTS_PER_PAGE),
             'currentAuthor' => $author,
             'categories' => Category::all(),
@@ -115,8 +121,10 @@ class PostController extends Controller
         $posts = Post::where('category_id', '=', $category->id);
         $posts = $this->search($posts);
 
-        return view ('index', [
-            'posts' => $posts->paginate(Post::POSTS_PER_PAGE),
+        //dd($posts);
+
+        return view ('category', [
+            'posts' => $posts->paginate(11),
             'currentCategory' => $category,
             'categories' => Category::all(),
             'authors' => User::all()
