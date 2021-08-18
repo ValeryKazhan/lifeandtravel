@@ -42,7 +42,7 @@
         {{$posts->links()}}
     </div>
 
-    <x--ad-widget-horisontal/>
+{{--    <x--ad-widget-horisontal/>--}}
 
 
 

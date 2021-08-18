@@ -1,48 +1,57 @@
 
-<x--ad-widget/>
+{{--<x--ad-widget/>--}}
 
+@auth
+    <x--title>
+        {{auth()->user()->name}}
+    </x--title>
+@endauth
 
 @admin
 
-    <div class="flex justify-center mb-12">
-        <x--section>
+    <div class="flex justify-center mb-8">
+{{--        <x--section>--}}
         <x--pink-button-link
             :class="'color-gray-100'"
             :link="'/admin/menu'"
         >
-            <div class="text-center" style="width: 100px">
+            <x--text-width-const>
                 ADMIN PANEL
-            </div>
+            </x--text-width-const>
+
+
 
         </x--pink-button-link>
-        </x--section>
+{{--        </x--section>--}}
     </div>
 
 @endadmin
 @auth
+
+
      <div class="mb-8">
         <x--center>
-
+            <div class="mb-8">
                 <x--pink-button-link
                     :link="'/authors/'.auth()->user()->username"
                 >
-                    <div class="text-center" style="width: 100px">
+                    <x--text-width-const>
                         MY PAGE
-                    </div>
+                    </x--text-width-const>
                 </x--pink-button-link>
-
+            </div>
         </x--center>
 
         <x--center>
-            <x--section>
+
                 <x--pink-button-link
                     :link="'/post'"
                 >
-                    <div class="text-center" style="width: 100px">
+                    <x--text-width-const>
                         CREATE POST
-                    </div>
+                    </x--text-width-const>
                 </x--pink-button-link>
-            </x--section>
+
         </x--center>
      </div>
 
@@ -54,13 +63,13 @@
 
 
 @endauth
-
+<x--newsletter-widget/>
 <x--social-widget/>
 <x--category-widget/>
-{{--<x--newsletter-widget/>--}}
+
 
 @php
- $posts = \App\Models\Post::query()->orderBy('created_at', 'desc')->take(3)->get();
+ $posts = \App\Models\Post::query()->orderBy('created_at', 'desc')->take(5)->get();
 @endphp
 <x--posts-aside-widget
     :posts="$posts"

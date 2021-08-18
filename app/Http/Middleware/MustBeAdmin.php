@@ -25,7 +25,7 @@ class MustBeAdmin
       if(auth()->guest())
           return false;
       else
-          return (auth()->user()->username === 'valerykazhan');
+          return (auth()->user()->username === 'admin');
 
 
 

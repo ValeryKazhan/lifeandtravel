@@ -7,7 +7,7 @@
                 <div class="author">
                     <img class="author-img center-block" src="/img/avatar-1.jpg" alt="">
                     <h1 class="text-uppercase">{{$author->name}}</h1>
-                    <p class="lead">{{count($author->posts)}} posts</p>
+                    <p class="lead">{{($postsNumber=count($author->posts))>0 ? $postsNumber : "No"}} posts</p>
                     <ul class="author-social">
                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="#"><i class="fa fa-twitter"></i></a></li>

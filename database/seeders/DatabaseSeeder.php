@@ -23,16 +23,28 @@ class DatabaseSeeder extends Seeder
 
         $user1 = User::factory()->create();
         $user2 = User::factory()->create();
+        $admin= User::create([
+            'username' => 'admin',
+            'name' => 'admin',
+            'email' => 'admin@mail.ru',
+            'password' => 'admin'
+        ]);
 
-        Post::factory(3)->create(['user_id' => $user1->id, 'category_id'=>$category1->id]);
-        Post::factory(2)->create(['user_id' => $user1->id, 'category_id'=>$category2->id]);
-        Post::factory(1)->create(['user_id' => $user1->id, 'category_id'=>$category3->id]);
+        Post::factory(10)->create(['user_id' => $user1->id, 'category_id'=>$category1->id]);
+        Post::factory(11)->create(['user_id' => $user1->id, 'category_id'=>$category2->id]);
+        Post::factory(12)->create(['user_id' => $user1->id, 'category_id'=>$category3->id]);
 
-        Post::factory(4)->create(['user_id' => $user2->id, 'category_id'=>$category1->id]);
-        Post::factory(5)->create(['user_id' => $user2->id, 'category_id'=>$category2->id]);
-        Post::factory(6)->create(['user_id' => $user2->id, 'category_id'=>$category3->id]);
+        Post::factory(13)->create(['user_id' => $user2->id, 'category_id'=>$category1->id]);
+        Post::factory(14)->create(['user_id' => $user2->id, 'category_id'=>$category2->id]);
+        Post::factory(15)->create(['user_id' => $user2->id, 'category_id'=>$category3->id]);
 
-        Comment::factory(10)->create(['post_id' => 1]);
+        Post::factory(5)->create();
+
+        foreach(Post::all() as $post){
+            Comment::factory(10)->create(['post_id' => $post->id]);
+        }
+
+
 
     }
 

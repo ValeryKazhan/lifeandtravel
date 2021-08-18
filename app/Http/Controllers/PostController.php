@@ -94,12 +94,13 @@ class PostController extends Controller
     }
 
     public function index(){
-
+        //dd(request('search'));
         //$posts = Post::query();
         $posts = $this->search(Post::query());
+        //dd($posts);
 
         return view ('index', [
-            'posts' => $posts->paginate(13),
+            'posts' => $posts->paginate(15),
             'categories' => Category::all(),
             'authors' => User::all()
             ]);

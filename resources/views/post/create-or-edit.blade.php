@@ -133,11 +133,9 @@
 
                     <div class="section-row mt-10">
                         <x--center>
-                            <x--pink-button
-                                type="submit"
-                            >
+                            <x--submit-button>
                                 {{$submitButton}}
-                            </x--pink-button>
+                            </x--submit-button>
 
                         </x--center>
 
