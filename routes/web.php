@@ -44,7 +44,7 @@ Route::get('/admin/menu', function (){
     return view('admin.menu');
 })->middleware('admin');
 
-Route::get('/admin/user{author}/posts', [PostController::class, 'adminPosts'])->middleware('admin');
+Route::get('/admin/user{author}/posts', [PostController::class, 'adminAuthorPosts'])->middleware('admin');
 Route::get('/admin/posts', [PostController::class, 'adminPosts'])->middleware('admin');
 Route::get('/admin/users', [UserController::class, 'adminUsers'])->middleware('admin');
 Route::get('/admin/post/edit/{post}', [PostController::class, 'adminEdit'])->middleware('admin');

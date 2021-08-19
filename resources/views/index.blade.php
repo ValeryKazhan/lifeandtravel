@@ -6,8 +6,6 @@
 
     <body>
 
-
-    {{--    <x--posts-big-picture/>--}}
     <x--three-main-posts
         :post1="$posts[0]"
         :post2="$posts[1]"
@@ -41,12 +39,6 @@
     <div class="flex justify-center">
         {{$posts->links()}}
     </div>
-
-{{--    <x--ad-widget-horisontal/>--}}
-
-
-
-
     </body>
 
 

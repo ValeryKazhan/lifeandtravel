@@ -37,8 +37,6 @@
                     {{$post->author->name}}
                 </p>
             </div>
-
-{{--            СПОЛЗАЕТ--}}
             <footer class="flex justify-between items-center mt-8">
                 <div class="flex items-center text-sm">
                     <img src="/images/lary-avatar.svg" alt="Lary avatar">

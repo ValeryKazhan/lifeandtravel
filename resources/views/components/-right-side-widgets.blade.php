@@ -1,6 +1,4 @@
 
-{{--<x--ad-widget/>--}}
-
 @auth
     <x--title>
         {{auth()->user()->name}}
@@ -10,7 +8,6 @@
 @admin
 
     <div class="flex justify-center mb-8">
-{{--        <x--section>--}}
         <x--pink-button-link
             :class="'color-gray-100'"
             :link="'/admin/menu'"
@@ -18,11 +15,7 @@
             <x--text-width-const>
                 ADMIN PANEL
             </x--text-width-const>
-
-
-
         </x--pink-button-link>
-{{--        </x--section>--}}
     </div>
 
 @endadmin

@@ -45,6 +45,4 @@
     <div class="flex justify-center">
         {{$posts->links()}}
     </div>
-
-{{--    <x--ad-widget-horisontal/>--}}
 </x-layout>

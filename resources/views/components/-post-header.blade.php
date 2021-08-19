@@ -13,7 +13,6 @@
                 <ul class="post-meta">
                     <li><a href="/authors/{{$post->author->username}}">{{$post->author->name}}</a></li>
                     <li>
-{{--                        {{$post->created_at->diffForHumans()}}--}}
                         <x--time-format
                             :time="$post->created_at"
                         />
@@ -21,7 +20,6 @@
                     <li>
                         <i class="fa fa-comments"></i> {{($commentsNumber = count($post->comments))===0 ? 'NO COMMENTS' : $commentsNumber}}
                     </li>
-                    {{--                    <li><i class="fa fa-eye"></i> 807</li>--}}
                 </ul>
             </div>
         </div>

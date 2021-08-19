@@ -4,10 +4,8 @@
 @auth
 <div class="section-row">
     <div class="section-title">
-{{--        <img src="https://i.pravatar.cc/60?u={{auth()->id()}}" alt="">--}}
         <h3 class="title">Leave a reply</h3>
     </div>
-
     <form class="post-reply" method="POST" action="/post/{{$post->slug}}/comments">
         @csrf
         <div class="row">
