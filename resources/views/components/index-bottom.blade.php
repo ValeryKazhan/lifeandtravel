@@ -1,7 +1,7 @@
 <!-- SECTION -->
 <x--section>
     <!-- container -->
-    <x--container>
+    <x-container>
         <!-- row -->
         <div class="row">
             <div class="col-md-4">
@@ -198,7 +198,7 @@
             </div>
         </div>
         <!-- /row -->
-    </x--container>
+    </x-container>
     <!-- /container -->
 </x--section>
 <!-- /SECTION -->
@@ -206,7 +206,7 @@
 <!-- SECTION -->
 <x--section>
     <!-- container -->
-    <x--container>
+    <x-container>
         <!-- row -->
         <div class="row">
             <div class="col-md-8">
@@ -341,7 +341,7 @@
             </div>
         </div>
         <!-- /row -->
-    </x--container>
+    </x-container>
     <!-- /container -->
 </x--section>
 <!-- /SECTION -->

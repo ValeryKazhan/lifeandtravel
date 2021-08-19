@@ -2,7 +2,7 @@
 
 <section class="mt-10 ml-20 space-y-6">
 
-    <x--comment-form
+    <x-comment-form
         :post="$post"
     />
 

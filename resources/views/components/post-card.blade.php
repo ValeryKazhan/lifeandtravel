@@ -22,7 +22,7 @@
             <p>{{$post->body}}</p>
 
             @if(auth()->id()==$post->author->id)
-            <x--center>
+            <x-center>
                 <x--pink-button-link
                     :class="'mr-10'"
                     :link="'/post/edit/'.$post->id"
@@ -35,12 +35,12 @@
                 >
                     Delete Post
                 </x--pink-button-link>
-            </x--center>
+            </x-center>
             @endif
 
 
             <div>
-                <x--comments-section
+                <x-comments-section
                     :post="$post"
                 />
             </div>

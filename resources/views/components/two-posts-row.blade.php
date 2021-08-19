@@ -17,7 +17,7 @@
             <div class="clearfix visible-md visible-lg"></div>
         @endif
     <!-- post -->
-        <x--post-half-page
+        <x-post-half-page
             :post="$post"
         />
 

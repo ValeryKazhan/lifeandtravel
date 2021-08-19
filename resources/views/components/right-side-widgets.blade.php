@@ -23,7 +23,7 @@
 
 
      <div class="mb-8">
-        <x--center>
+        <x-center>
             <div class="mb-8">
                 <x--pink-button-link
                     :link="'/authors/'.auth()->user()->username"
@@ -33,9 +33,9 @@
                     </x--text-width-const>
                 </x--pink-button-link>
             </div>
-        </x--center>
+        </x-center>
 
-        <x--center>
+        <x-center>
 
                 <x--pink-button-link
                     :link="'/post'"
@@ -45,7 +45,7 @@
                     </x--text-width-const>
                 </x--pink-button-link>
 
-        </x--center>
+        </x-center>
      </div>
 
 
@@ -58,7 +58,7 @@
 @endauth
 <x--newsletter-widget/>
 <x--social-widget/>
-<x--category-widget/>
+<x-category-widget/>
 
 
 @php

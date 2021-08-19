@@ -1,6 +1,6 @@
 @props(['name'=>'posts', 'posts' => array()])
 <!-- row -->
-<x--row>
+<x-row>
     <div class="col-md-12">
         <div class="section-title">
             <h2 class="title">{{$name}}</h2>
@@ -11,11 +11,11 @@
 
 
         @if(($loop->iteration % 3) == 1)
-            <x--endline/>
+            <x-endline/>
         @endif
 
     <!-- post -->
-        <x--post-third-page
+        <x-post-third-page
             :post="$post"
         />
 
@@ -26,5 +26,5 @@
 
 
 
-</x--row>
+</x-row>
 <!-- /row -->
