@@ -17,7 +17,7 @@
         <div class="post-comments">
             <!-- comment -->
             @foreach($post->comments as $comment)
-                <x--post-comment
+                <x-post-comment
                     :comment="$comment"
                 />
             @endforeach

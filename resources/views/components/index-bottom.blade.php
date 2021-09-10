@@ -1,5 +1,5 @@
 <!-- SECTION -->
-<x--section>
+<x-section>
     <!-- container -->
     <x-container>
         <!-- row -->
@@ -200,11 +200,11 @@
         <!-- /row -->
     </x-container>
     <!-- /container -->
-</x--section>
+</x-section>
 <!-- /SECTION -->
 
 <!-- SECTION -->
-<x--section>
+<x-section>
     <!-- container -->
     <x-container>
         <!-- row -->
@@ -343,5 +343,5 @@
         <!-- /row -->
     </x-container>
     <!-- /container -->
-</x--section>
+</x-section>
 <!-- /SECTION -->

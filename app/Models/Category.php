@@ -16,6 +16,10 @@ class Category extends Model
      * @var mixed
      */
 
+    public function getNameAttribute($name){
+        return ucwords($name);
+    }
+
     public function posts()
     {
         return $this->hasMany(Post::class);

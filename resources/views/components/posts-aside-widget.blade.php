@@ -9,7 +9,7 @@
     @foreach($posts as $post)
     <!-- post -->
         <div class="post post-widget">
-            <x--post-content
+            <x-post-content
                 :post="$post"
             />
         </div>

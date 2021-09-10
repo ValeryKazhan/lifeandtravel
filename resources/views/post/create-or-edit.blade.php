@@ -22,18 +22,18 @@
 
 
 <x-layout>
-    <x--section>
-        <x--container>
+    <x-section>
+        <x-container>
             @auth
-                <x--center>
+                <x-center>
                     <h3 class="title mb-8">{{$formName}}</h3>
-                </x--center>
+                </x-center>
 
                 <form method="POST" action="{{$action}}">
                     @csrf
-                    <x--title>
+                    <x-title>
                         Post Title
-                    </x--title>
+                    </x-title>
                     <p>Type in your post title into the field below</p>
                     <input class="input mb-10"
                            type="text"
@@ -42,9 +42,9 @@
                            value="{{$header}}"
                            required
                     >
-                    <x--title>
+                    <x-title>
                         Content
-                    </x--title>
+                    </x-title>
 
                     <div class="form-group">
                             <textarea class="input"
@@ -95,15 +95,15 @@
                         </select>
                     @endif
                     <div class="section-row mt-10">
-                        <x--center>
-                            <x--submit-button>
+                        <x-center>
+                            <x-submit-button>
                                 {{$submitButton}}
-                            </x--submit-button>
-                        </x--center>
+                            </x-submit-button>
+                        </x-center>
                     </div>
                 </form>
             @endauth
-        </x--container>
-    </x--section>
+        </x-container>
+    </x-section>
 </x-layout>
 

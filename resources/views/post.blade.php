@@ -2,7 +2,7 @@
 <x-layout>
 
     @include('header')
-    <x--post-card :post="$post"/>
+    <x-post-card :post="$post"/>
 
 
     <x-flash

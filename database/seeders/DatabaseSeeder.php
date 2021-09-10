@@ -41,7 +41,13 @@ class DatabaseSeeder extends Seeder
         Post::factory(5)->create();
 
         foreach(Post::all() as $post){
-            Comment::factory(10)->create(['post_id' => $post->id]);
+
+            for($i=1; $i<4; $i++){
+                Comment::factory()->create([
+                    'user_id' => $i,
+                    'post_id' => $post->id]);
+            }
+
         }
 
 

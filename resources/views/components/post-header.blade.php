@@ -13,7 +13,7 @@
                 <ul class="post-meta">
                     <li><a href="/authors/{{$post->author->username}}">{{$post->author->name}}</a></li>
                     <li>
-                        <x--time-format
+                        <x-time-format
                             :time="$post->created_at"
                         />
                     </li>

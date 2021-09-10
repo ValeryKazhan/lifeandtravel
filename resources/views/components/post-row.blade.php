@@ -10,7 +10,7 @@
         <ul class="post-meta">
             <li><a href="/authors/{{$post->author->slug}}">{{$post->author->name}}</a></li>
             <li>
-                <x--time-format
+                <x-time-format
                     :time="$post->created_at"
                 />
             </li>
@@ -19,18 +19,18 @@
 
         @if(auth()->id()==$post->author->id)
 
-        <x--pink-button-link
+        <x-pink-button-link
             :class="'mr-10'"
             :link="'/post/edit/'.$post->id"
         >
             Edit Post
-        </x--pink-button-link>
+        </x-pink-button-link>
 
-        <x--pink-button-link
+        <x-pink-button-link
             :link="'/post/delete/'.$post->id"
         >
             Delete Post
-        </x--pink-button-link>
+        </x-pink-button-link>
 
         @endif
     </div>

@@ -2,7 +2,7 @@
 
 <div class="col-md-4">
     <div class="post post-sm">
-        <x--post-content
+        <x-post-content
             :post="$post"
         />
     </div>

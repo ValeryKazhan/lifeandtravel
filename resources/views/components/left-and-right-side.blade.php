@@ -1,18 +1,18 @@
-<x--section>
+<x-section>
     <!-- container -->
     <x-container>
         <!-- row -->
-        <x--row>
-            <x--left-side>
+        <x-row>
+            <x-left-side>
                 {{$leftSide}}
-            </x--left-side>
+            </x-left-side>
 
-            <x--right-side>
+            <x-right-side>
                 {{$rightSide}}
-            </x--right-side>
+            </x-right-side>
 
-        </x--row>
+        </x-row>
         <!-- /row -->
     </x-container>
     <!-- /container -->
-</x--section>
+</x-section>

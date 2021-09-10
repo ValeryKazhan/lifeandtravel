@@ -50,7 +50,7 @@
 
 
 <div class="mt-6">
-<x--nav>
+<x-nav>
 <div id="nav-top">
     <div class="container">
         <!-- social -->
@@ -79,26 +79,26 @@
 
                 @auth
 
-                    <x--dropdown-element>
+                    <x-dropdown-element>
                         <a href="/authors/{{auth()->user()->username}}">
-                        Welcome, {{auth()->user()->name}}
+                        {{auth()->user()->name}}
                         </a>
-                    </x--dropdown-element>
+                    </x-dropdown-element>
 
-                    <x--dropdown-element>
+                    <x-dropdown-element>
                         <a>
                         <form method="POST" action="/sessions/logout">
                         @csrf
                             <button type="submit">LOG OUT</button>
                         </form>
                         </a>
-                    </x--dropdown-element>
+                    </x-dropdown-element>
                 @else
-                    <x--dropdown-element><a href="/register/create">Register</a></x--dropdown-element>
-                    <x--dropdown-element><a href="/sessions/login">Log In</a></x--dropdown-element>
+                    <x-dropdown-element><a href="/register/create">Register</a></x-dropdown-element>
+                    <x-dropdown-element><a href="/sessions/login">Log In</a></x-dropdown-element>
                 @endauth
-                <x--search-button/>
-                <x--search-field/>
+                <x-search-button/>
+                <x-search-field/>
 
 
             </div>
@@ -108,7 +108,7 @@
         <!-- /search & aside toggle -->
     </div>
 </div>
-</x--nav>
+</x-nav>
 </div>
     {{$slot}}
 @include('footer')

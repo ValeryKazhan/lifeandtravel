@@ -8,7 +8,7 @@
         <div class="media-heading">
             <a href="/authors/{{$comment->author->username}}"><h4>{{$comment->author->name}}</h4></a>
             <span class="time">
-                <x--time-format
+                <x-time-format
                     :time="$comment->created_at"
                 />
             </span>
