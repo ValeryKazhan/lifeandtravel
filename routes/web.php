@@ -49,8 +49,8 @@ Route::get('/admin/posts', [PostController::class, 'adminPosts'])->middleware('a
 Route::get('/admin/users', [UserController::class, 'adminUsers'])->middleware('admin');
 Route::get('/admin/post/edit/{post}', [PostController::class, 'adminEdit'])->middleware('admin');
 Route::get('/admin/user/edit/{user}', [UserController::class, 'adminEdit'])->middleware('admin');
-Route::post('/admin/user/update/{id}', [UserController::class, 'update'])->middleware('admin');
-Route::get('/admin/user/delete/{id}', [UserController::class, 'destroy'])->middleware('admin');
+Route::post('/admin/user/update/{user}', [UserController::class, 'update'])->middleware('admin');
+Route::get('/admin/user/delete/{user}', [UserController::class, 'destroy'])->middleware('admin');
 
 Route::get('/blogpost', function(){
     return view('blog-post');

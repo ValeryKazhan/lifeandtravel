@@ -12,6 +12,16 @@ class Post extends Model
 
     use HasFactory;
 
+    public function scopeFilter($query){
+        if(request('search'))
+        {
+            $query
+                ->where('header', 'like', '%'.request('search').'%')
+                ->orWhere('body', 'like', '%'.request('search').'%');
+        }
+
+    }
+
     public function comments()
     {
         return $this->hasMany(Comment::class);

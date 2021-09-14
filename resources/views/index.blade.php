@@ -3,7 +3,9 @@
 <!--NEW CODE-->
 <x-layout>
     @include('header')
-
+    @if(count($posts) == 0)
+        <h4 class="text-center mt-12">NO SEARCH RESULTS</h4>
+    @else
     <body>
 
     <x-three-main-posts
@@ -40,6 +42,6 @@
         {{$posts->links()}}
     </div>
     </body>
-
+    @endif
 
 </x-layout>

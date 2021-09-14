@@ -5,6 +5,7 @@ use App\Http\Middleware\MustBeAdmin;
 use App\Models\Category;
 
 use App\Models\User;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Illuminate\Support\Str;
@@ -47,8 +48,6 @@ class PostController extends Controller
             'user_id' => ['required', Rule::exists('users', 'id')]
         ]);
 
-
-
         self::matchesAuth($attributes['user_id']);
 
         $attributes['slug'] = Str::slug($attributes['header']);
@@ -73,8 +72,7 @@ class PostController extends Controller
     public function update(Post $post){
 
         $attributes = $this->getValidatedPostAttributes();
-
-        DB::table('posts')->where('id','=', $post->id)->update($attributes);
+        $post->update($attributes);
 
         return redirect("/post/".$attributes['slug'])->with('post edited', 'Post "'.$post->header.'" is successfully edited');
     }
@@ -82,8 +80,7 @@ class PostController extends Controller
     public function destroy(Post $post){
 
             self::matchesAuth($post->author->id);
-
-            DB::table('posts')->where('id', '=', $post->id)->delete();
+            $post->delete();
             session()->flash('post deleted', "Post \"$post->header\" is successfully deleted");
 
         return redirect('/authors/'.auth()->user()->username);
@@ -136,9 +133,9 @@ class PostController extends Controller
 
 
     private function search($posts){
+
         if(request($search = 'search'))
         {
-
             $posts
                 ->where('header', 'like', '%'.request($search).'%')
                 ->orWhere('body', 'like', '%'.request($search).'%');

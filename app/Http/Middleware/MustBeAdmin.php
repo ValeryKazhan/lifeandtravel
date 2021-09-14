@@ -34,7 +34,6 @@ class MustBeAdmin
 
     public function handle(Request $request, Closure $next)
     {
-
         if(!(self::isAdmin())){
             abort(403);
         }

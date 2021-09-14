@@ -2,13 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-use App\Models\Post;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-use App\Http\Middleware\MustBeAdmin;
-use Illuminate\Support\Facades\DB;
 
 
 class UserController extends Controller
@@ -53,21 +48,20 @@ class UserController extends Controller
         ]);
     }
 
-    public function destroy($id){
-
-        DB::table('users')->where('id', '=', $id)->delete();
-        return redirect('/admin/menu')->with('user deleted', "User with id $id is deleted");
+    public function destroy(User $user){
+        $user->delete();
+        return redirect('/admin/menu')->with('user deleted', "User with id $user->id is deleted");
     }
 
-    public function update($id){
+    public function update(User $user){
 
-        $attributes = request()->validate([
+        $attributes = \request()->validate([
             'name' => ['required','max:255'],
-            'username'=> ['required','min:3','max:255', Rule::unique('users', 'username')->ignore($id)],
-            'email' => ['required','email','max:255', Rule::unique('users', 'email')->ignore($id)]
+            'username'=> ['required','min:3','max:255', Rule::unique('users', 'username')->ignore($user->id)],
+            'email' => ['required','email','max:255', Rule::unique('users', 'email')->ignore($user->id)]
         ]);
-            DB::table('users')->where('id', '=', $id)->update($attributes);
-            return redirect('/admin/menu')->with('user updated', "User with id $id is updated");
+            $user->update($attributes);
+            return redirect('/admin/menu')->with('user updated', "User with id $user->id is updated");
     }
 
 
