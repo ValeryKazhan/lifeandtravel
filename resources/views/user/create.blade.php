@@ -1,9 +1,12 @@
 <x-layout>
     <section class="ps-6 py-8">
-        <main class="max-w-lg mx-auto mt-10 bg-gray-100 p-6 rounded-xl border border-gray-200">
+        <main class="max-w-xl mx-auto mt-10 p-6  border border-gray-200">
 
-            <h1 class="text-center font-bold text-xl">Register!</h1>
-            <form method="POST" action="/register/create" class="mt-10">
+            <x-center>
+                <h3 class="mt-3">Create New Account</h3>
+            </x-center>
+
+            <form method="POST" action="/register/create" class="mt-8">
 
                 @csrf
 

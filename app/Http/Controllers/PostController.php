@@ -17,7 +17,7 @@ class PostController extends Controller
 
 
     private static function matchesAuth($userId){
-        if($userId!=auth()->id() and !MustBeAdmin::isAdmin())///как в даннном случае пользоваться middleware правильно?
+        if($userId!=auth()->id() and !MustBeAdmin::isAdmin())
             abort(403);
     }
 
@@ -36,6 +36,7 @@ class PostController extends Controller
         ]);
     }
 
+
     private function getValidatedPostAttributes(): array
     {
 
@@ -46,6 +47,8 @@ class PostController extends Controller
             'user_id' => ['required', Rule::exists('users', 'id')]
         ]);
 
+
+
         self::matchesAuth($attributes['user_id']);
 
         $attributes['slug'] = Str::slug($attributes['header']);
@@ -55,7 +58,11 @@ class PostController extends Controller
 
     public function store(){
 
+
+
         $attributes = $this->getValidatedPostAttributes();
+
+
 
         $post = Post::create($attributes);
 
@@ -70,10 +77,6 @@ class PostController extends Controller
         DB::table('posts')->where('id','=', $post->id)->update($attributes);
 
         return redirect("/post/".$attributes['slug'])->with('post edited', 'Post "'.$post->header.'" is successfully edited');
-//        $post->slug = $attributes['slug'];
-//        $post->header = $attributes['header'];
-//        $post->body = $attributes['body'];
-//        $post->save();
     }
 
     public function destroy(Post $post){
@@ -87,22 +90,20 @@ class PostController extends Controller
     }
 
     public function index(){
-
         $posts = Post::query();
         $posts = $this->search($posts);
+
         return view ('index', [
-            'posts' => $posts->paginate(Post::POSTS_PER_PAGE),
+            'posts' => $posts->paginate(15),
             'categories' => Category::all(),
             'authors' => User::all()
             ]);
     }
 
     public function showAuthorPosts(User $author){
-
         $posts = Post::where('user_id', '=', $author->id);
         $posts = $this->search($posts);
-
-        return view ('index', [
+        return view ('author', [
             'posts' => $posts->paginate(Post::POSTS_PER_PAGE),
             'currentAuthor' => $author,
             'categories' => Category::all(),
@@ -114,9 +115,8 @@ class PostController extends Controller
 
         $posts = Post::where('category_id', '=', $category->id);
         $posts = $this->search($posts);
-
-        return view ('index', [
-            'posts' => $posts->paginate(Post::POSTS_PER_PAGE),
+        return view ('category', [
+            'posts' => $posts->paginate(11),
             'currentCategory' => $category,
             'categories' => Category::all(),
             'authors' => User::all()
@@ -138,6 +138,7 @@ class PostController extends Controller
     private function search($posts){
         if(request($search = 'search'))
         {
+
             $posts
                 ->where('header', 'like', '%'.request($search).'%')
                 ->orWhere('body', 'like', '%'.request($search).'%');
@@ -145,16 +146,15 @@ class PostController extends Controller
         return $posts;
     }
 
-    public function adminPosts(User $author){
-
-
-            if($author->id)
-                $posts = $author->posts;
-            else
-                $posts = Post::all();
-
+    public function adminPosts(){
         return view ('admin.posts', [
-            'posts' => $posts
+            'posts' => Post::all()
+        ]);
+    }
+
+    public function adminAuthorPosts(User $author){
+        return view ('admin.posts', [
+           'posts' => $author->posts
         ]);
     }
 
@@ -170,6 +170,5 @@ class PostController extends Controller
     }
 
 
-    //index, show, create, store, edit, update, destroy
 
 }

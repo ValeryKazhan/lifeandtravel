@@ -1,22 +1,20 @@
 @props(['comment'])
-<x-panel class="bg-gray-50">
-    <article class="flex">
-        <div class="flex-shrink-0">
-            <img class="rounded-xl" src="https://i.pravatar.cc/60?u={{$comment->id}}" alt="">
-        </div>
 
-        <div class="ml-6">
-            <header class="mb-4">
-                <h3 class="font-bold">{{$comment->author->name}}</h3>
-                <p class="text-xs">
-                    Posted
-                    <time>{{$comment->created_at->format("F j, Y, g:i a")}}</time></p>
-            </header>
-
-            <p>
-                {{$comment->body}}
-            </p>
+<div class="media">
+    <div class="media-left">
+        <a href="/authors/{{$comment->author->username}}"><img class="media-object" style="max-width: none" src="/img/avatar-2.jpg" alt=""></a>
+    </div>
+    <div class="media-body">
+        <div class="media-heading">
+            <a href="/authors/{{$comment->author->username}}"><h4>{{$comment->author->name}}</h4></a>
+            <span class="time">
+                <x-time-format
+                    :time="$comment->created_at"
+                />
+            </span>
         </div>
-    </article>
-</x-panel>
+        <p>{{$comment->body}}</p>
+    </div>
+</div>
+
 

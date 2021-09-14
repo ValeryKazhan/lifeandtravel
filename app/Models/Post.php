@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 
 class Post extends Model
 {
-    const POSTS_PER_PAGE = 6;
+    const POSTS_PER_PAGE = 8;
 
     use HasFactory;
 

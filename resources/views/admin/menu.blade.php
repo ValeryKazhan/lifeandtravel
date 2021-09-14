@@ -1,12 +1,12 @@
 <x-layout>
     <h1 class="text-center font-bold text-xl">ADMIN PANEL</h1>
     <div class="text-center mt-10">
-        <x-link-button :link="'/admin/posts'">
+        <x-pink-button-link :link="'/admin/posts'">
             Posts
-        </x-link-button>
-        <x-link-button :link="'/admin/users'">
+        </x-pink-button-link>
+        <x-pink-button-link :link="'/admin/users'">
             Users
-        </x-link-button>
+        </x-pink-button-link>
     </div>
 
     <x-flash
