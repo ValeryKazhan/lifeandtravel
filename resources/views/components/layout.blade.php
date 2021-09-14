@@ -65,7 +65,7 @@
         <!-- logo -->
         <div class="">
         <div class="nav-logo">
-                <a href="\" class="logo"><img src="/img/blogo.png" alt="" class="mt-1"></a>
+                <a href="\" class="logo"><img src="/img/logo4.png" alt="" class="" style="max-width: 100%; height: 35px"></a>
         </div>
         </div>
         <!-- /logo -->
@@ -94,8 +94,8 @@
                         </a>
                     </x-dropdown-element>
                 @else
-                    <x-dropdown-element><a href="/register/create">Register</a></x-dropdown-element>
-                    <x-dropdown-element><a href="/sessions/login">Log In</a></x-dropdown-element>
+                        <x-dropdown-element><a href="/register/create">Register</a></x-dropdown-element>
+                        <x-dropdown-element><a href="/sessions/login">Log In</a></x-dropdown-element>
                 @endauth
                 <x-search-button/>
                 <x-search-field/>

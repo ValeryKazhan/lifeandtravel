@@ -5,7 +5,7 @@
             <form>
                 <p>Enter your Email into the field below to receive our latest news.</p>
                 <input class="input" name="newsletter" placeholder="Enter Your Email">
-                <button class="primary-button">Subscribe</button>
+                <button class="primary-button" style="margin-left: 45px">Subscribe</button>
             </form>
         </div>
     </div>
