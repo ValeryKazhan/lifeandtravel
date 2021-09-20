@@ -7,11 +7,11 @@
         <!-- row -->
         <div id="hot-post" class="row hot-post">
             <div class="col-md-8 hot-post-left">
-                <!-- post -->
+
                 <x-post-thumb
                     :post="$post1"
                 />
-                <!-- /post -->
+
             </div>
             <div class="col-md-4 hot-post-right">
                 <!-- post -->

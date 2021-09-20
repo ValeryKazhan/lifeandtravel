@@ -12,6 +12,17 @@ class Post extends Model
 
     use HasFactory;
 
+    public function getImagesAttribute($images){
+        if($images)
+            return json_decode($images, true);
+
+        return ['/img/post-9.jpg'];
+    }
+
+    public function setImagesAttribute($images){
+        $this->attributes['images'] = json_encode($images);
+    }
+
     public function scopeFilter($query){
         if(request('search'))
         {

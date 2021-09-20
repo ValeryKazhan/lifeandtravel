@@ -56,13 +56,12 @@
 
 
 @endauth
-<x-newsletter-widget/>
 <x-social-widget/>
 <x-category-widget/>
 
 
 @php
- $posts = \App\Models\Post::query()->orderBy('created_at', 'desc')->take(5)->get();
+ $posts = \App\Models\Post::query()->orderBy('created_at', 'desc')->take(3)->get();
 @endphp
 <x-posts-aside-widget
     :posts="$posts"

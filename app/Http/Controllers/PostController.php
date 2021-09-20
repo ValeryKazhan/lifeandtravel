@@ -91,7 +91,7 @@ class PostController extends Controller
         $posts = $this->search($posts);
 
         return view ('index', [
-            'posts' => $posts->paginate(15),
+            'posts' => $posts->paginate(9),
             'categories' => Category::all(),
             'authors' => User::all()
             ]);

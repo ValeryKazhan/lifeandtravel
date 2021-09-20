@@ -1,7 +1,7 @@
 @props(['post'])
 
 <div class="post post-row">
-    <a class="post-img" href="/post/{{$post->slug}}"><img src="/img/post-13.jpg" alt=""></a>
+    <a class="post-img" href="/post/{{$post->slug}}"><img src="{{$post->images[0]}}" alt=""></a>
     <div class="post-body">
         <div class="post-category">
             <a href="/categories/{{$post->category->slug}}">{{$post->category->name}}</a>
