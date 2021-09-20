@@ -28,7 +28,8 @@ class PostFactory extends Factory
             'user_id' => User::factory(),
             'header' => $this->faker->sentence,
             'slug' => $this->faker->slug,
-            'body' => $this->faker->paragraph
+            'body' => $this->faker->paragraph,
+            'created_at' => $this->faker->dateTimeBetween('-1 year')
         ];
     }
 }

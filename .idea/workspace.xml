@@ -2,31 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d769168a-2231-4364-81fd-91225c195057" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PostController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Post.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/factories/PostFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/PostFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_06_09_114314_create_posts_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_06_09_114314_create_posts_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/illustration-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/illustration-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/illustration-3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/illustration-4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/illustration-5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/lary-avatar.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/lary-head.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/lary-newsletter-icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/lary-newsletter-icon.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/logo.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/mailbox-icon.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/author-header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/author-header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/post-content.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/post-content.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/post-half-page.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/post-half-page.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/post-row.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/post-row.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/right-side-widgets.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/right-side-widgets.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/three-main-posts.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/three-main-posts.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/posts-aside-widget.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/posts-aside-widget.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,7 +164,7 @@
       <option name="presentableId" value="Default" />
       <updated>1631620867770</updated>
       <workItem from="1631620869006" duration="5127000" />
-      <workItem from="1632108905888" duration="6388000" />
+      <workItem from="1632108905888" duration="8755000" />
     </task>
     <servers />
   </component>

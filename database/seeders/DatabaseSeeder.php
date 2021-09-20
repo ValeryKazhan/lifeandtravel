@@ -152,21 +152,24 @@ class DatabaseSeeder extends Seeder
             'user_id' => $peter->id,
             'category_id'=>$sport->id,
             'header' => 'DRINKS FOR ATHLETES',
-            'images' => ['/img/blogs/8/1.png']
+            'images' => ['/img/blogs/8/1.png'],
+            'created_at' => now()
         ]);
 
         Post::factory()->create([
             'user_id' => $peter->id,
             'category_id'=>$sport->id,
             'header' => 'WHAT DO COACHES ACTUALLY DO',
-            'images' => ['/img/blogs/9/1.png']
+            'images' => ['/img/blogs/9/1.png'],
+            'created_at' => now()
         ]);
 
         Post::factory()->create([
             'user_id' => $kevin->id,
             'category_id'=>$news->id,
             'header' => 'LESSONS LEARNED FROM WORKING ABROAD',
-            'images' => ['/img/blogs/10/1.png']
+            'images' => ['/img/blogs/10/1.png'],
+            'created_at' => now()
         ]);
 
 
